@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "CreateNotice";
+}
+
+
+@model WeBudget.Models.Notice
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>MуBudget</title>
+    <link rel="stylesheet" href="~/Content/styles.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <title>Выравнивание фотографии по центру</title>
+</head>
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<style>
+    .fig {
+        text-align: center;
+    }
+
+
+    .center {
+        width: 700px;
+        padding: 10px 250px;
+        margin: 0;
+        font-size: 14px !important;
+    }
+</style>
+
+
+
+
+
+<div class="container">
+    <h2>Добавить объявление</h2>
+
+     @using (Html.BeginForm("CreateNotice", "Notice", null, FormMethod.Post,
+     new { enctype = "multipart/form-data" }))  { 
+    <p>
+        @Html.LabelFor(model => model.name, "Наименование")
+    </p>
+    <p>
+        @Html.EditorFor(model => model.name)
+        @Html.ValidationMessageFor(model => model.name)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.price, "Цена")
+    </p>
+    <p>
+        @Html.EditorFor(model => model.price)
+        @Html.ValidationMessageFor(model => model.price)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.text, "Текст объявления")
+    </p>
+    <p>
+        @Html.EditorFor(model => model.text)
+        @Html.ValidationMessageFor(model => model.text)
+    </p>
+
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Image</legend>
+        <div class="editor-label">
+        </div>
+        <div class="editor-field">
+            <input id="ImagePath" title="Upload a product image"
+                   type="file" name="file" />
+        </div>
+        <p><input type="submit" value="Добавить" /></p>
+    </fieldset>
+    }
+    
+</div>

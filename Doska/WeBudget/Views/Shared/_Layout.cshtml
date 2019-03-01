@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css" />
+    <style>
+        .fig {
+            text-align: center;
+        }
+
+
+        .center {
+            width: 700px;
+            padding: 10px 250px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".dual-collapse2">
+				<span style="color: black;">☰</span>
+			</button>
+			<div class="navbar-brand">@Html.ActionLink("Доска объявлений", "Index", "Home")</div>
+		</div>
+		<div class="navbar-collapse collapse dual-collapse2">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">@Html.ActionLink("ОСНОВНЫЕ ЭТАПЫ", "Table", "Home")</li>
+				<li>@Html.ActionLink("СОЗДАНИЕ ОБЪЯВЛЕНИЯ", "Notices", "Notice")</li>
+				<li>@Html.ActionLink("О САЙТЕ", "About", "Home") </li>
+				<li>@Html.ActionLink("ОБРАТНАЯ СВЯЗЬ", "Contact", "Home")</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		@RenderBody()
+	</div>
+	<footer>
+		<div class="footer5">
+			<div class="container text-center">
+				<h3>@DateTime.Now.ToLongDateString()</h3>
+				
+			</div>
+		</div>
+	</footer>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

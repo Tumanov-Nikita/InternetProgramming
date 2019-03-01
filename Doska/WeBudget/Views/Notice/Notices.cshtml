@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Notices";
+}
+
+
+
+@model IEnumerable<WeBudget.Service.Abstract.BaseEntity>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>MуBudget</title>
+	<link rel="stylesheet" href="~/Content/styles.css" type="text/css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css" />
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	<title>Выравнивание фотографии по центру</title>
+</head>
+
+
+
+
+<style>
+    .fig {
+        text-align: center; 
+    }
+
+
+    .center {
+        width: 700px;
+        padding: 10px;
+        margin: auto;
+    }
+</style>
+
+
+
+
+
+
+<div class="container">
+    <h2>Объявления</h2>
+    @{ var grid = new WebGrid(Model); }
+
+    <div class="container">
+        <div>
+            @grid.GetHtml(columns: grid.Columns(
+                                                      grid.Column("Id", "№"),
+                                                      grid.Column("name", "Наименование"),
+                                                      grid.Column("picFileName", "Изображение", format: @<img src="~/@item.picFileName" width="100" height="100">),
+                                                      grid.Column("price", "Цена"),
+                                                      grid.Column("text", "Текст"),
+                                                      grid.Column("Редактировать", format: @<a href="~/Notice/EditNotice/@item.Id"> Редактировать</a>),
+                                                      grid.Column("Удалить", format: @<a href="~/Notice/DeleteNotice/@item.Id"> Удалить</a>),
+                                                      grid.Column("Переход", format: @<a href="~/Notice/Notice/@item.Id"> Переход</a>)
+                                                                   ), tableStyle: "table-bordered")
+        </div>
+        </div>
+        <input type="button" value="Добавить" onClick='location.href="CreateNotice"'>
+
+    </div>

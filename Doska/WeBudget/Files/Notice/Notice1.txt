@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Notice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>1</Id>
+  <name>Товар на продажу</name>
+  <picFileName>Files/1Product.jpg</picFileName>
+  <price>666</price>
+  <text>Данный товар предназначен для продажи на доске объявлений. Все необходимые лицензии на этот товар спрашивайте при встрече</text>
+  <UserId>0</UserId>
+</Notice>
